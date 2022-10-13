@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IEC77C_ADT_2022_23_1.Logic\IEC77C_ADT_2022_23_1.Logic.csproj" />
+    <ProjectReference Include="..\IEC77C_ADT_2022_23_1.Models\IEC77C_ADT_2022_23_1.Models.csproj" />
+    <ProjectReference Include="..\IEC77C_ADT_2022_23_1.Repository\IEC77C_ADT_2022_23_1.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
