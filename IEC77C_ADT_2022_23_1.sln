@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{F1EED2C1
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempSolution_For_Database", "TempSolution_For_Database\TempSolution_For_Database.csproj", "{5CC690F0-86D9-489F-A202-9BE8FB3E0831}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{DBFC0164-93B5-4CCA-9B29-7A7A1555853C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBFC0164-93B5-4CCA-9B29-7A7A1555853C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBFC0164-93B5-4CCA-9B29-7A7A1555853C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CC690F0-86D9-489F-A202-9BE8FB3E0831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CC690F0-86D9-489F-A202-9BE8FB3E0831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CC690F0-86D9-489F-A202-9BE8FB3E0831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CC690F0-86D9-489F-A202-9BE8FB3E0831}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
