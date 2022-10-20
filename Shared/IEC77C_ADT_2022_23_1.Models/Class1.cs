@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+
 
 namespace IEC77C_ADT_2022_23_1.Models
 {
@@ -6,7 +8,7 @@ namespace IEC77C_ADT_2022_23_1.Models
     {
         int Store_Id { get; set; }
         string Company_ID { get; set; }
-        string City_ID
+        string City_ID { get; set; }
         string Adress { get; set; }
         int Size { get; set; } //squareMeters
     }
@@ -24,7 +26,7 @@ namespace IEC77C_ADT_2022_23_1.Models
         string City_Name { get; set; }
         string State { get; set; }
         string Country { get; set; }
-    
+
     }
 
 
