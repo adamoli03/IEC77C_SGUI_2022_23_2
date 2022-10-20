@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\IEC77C_ADT_2022_23_1.Models\IEC77C_ADT_2022_23_1.Models.csproj" />
   </ItemGroup>
 
 </Project>
