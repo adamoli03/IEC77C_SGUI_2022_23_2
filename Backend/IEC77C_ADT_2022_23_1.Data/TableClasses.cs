@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Data.Entity;
-using IEC77C_ADT_2022_23_1;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace IEC77C_ADT_2022_23_1.Data
 {
-    //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True; MultipleActiveResultSets=True;
     public class Store
     {
         int Store_Id { get; set; }
@@ -29,14 +30,4 @@ namespace IEC77C_ADT_2022_23_1.Data
         string Country { get; set; }
 
     }
-
-    public class StoresContext : DbContext
-    {
-        public virtual DbSet<Store> Stores { get; set; }
-        
-        public virtual DbSet<Company> Companies { get; set; }
-
-        public virtual DbSet<City> Cities { get; set; }
-    }
-
 }
