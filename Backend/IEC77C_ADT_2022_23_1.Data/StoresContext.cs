@@ -9,6 +9,7 @@ namespace IEC77C_ADT_2022_23_1.Data
 
     public class StoresContext : DbContext
     {
+        
         public virtual DbSet<Store> Stores { get; set; }
         
         public virtual DbSet<Company> Companies { get; set; }

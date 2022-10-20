@@ -6,7 +6,7 @@ namespace IEC77C_ADT_2022_23_1.Models
 {
     public class Store
     {
-        public Store(int store_Id, string company_ID, string city_ID, string adress, int size)
+        public Store(int store_Id, int company_ID, int city_ID, string adress, int size)
         {
             Store_Id = store_Id;
             Company_ID = company_ID;
@@ -16,8 +16,8 @@ namespace IEC77C_ADT_2022_23_1.Models
         }
 
         int Store_Id { get; set; }
-        string Company_ID { get; set; }
-        string City_ID { get; set; }
+        int Company_ID { get; set; }
+        int City_ID { get; set; }
         string Adress { get; set; }
         int Size { get; set; } //squareMeters
     }
