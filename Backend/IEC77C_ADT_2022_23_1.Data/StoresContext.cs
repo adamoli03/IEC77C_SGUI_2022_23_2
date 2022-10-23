@@ -7,8 +7,9 @@ namespace IEC77C_ADT_2022_23_1.Data
     //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True; MultipleActiveResultSets=True;
     
 
-    public class StoresContext : DbContext
+    public class CompanzContext : DbContext
     {
+        public CompanzContext() : base("CompanyContext") { }
         
         public virtual DbSet<Store> Stores { get; set; }
         
