@@ -6,19 +6,19 @@ namespace IEC77C_ADT_2022_23_1.Models
 {
     public class Store
     {
-        public Store(int store_Id, int company_ID, int city_ID, string adress, int size)
+        public Store(int store_Id, int company_ID, int city_ID, string address, int size)
         {
             Store_Id = store_Id;
             Company_ID = company_ID;
             City_ID = city_ID;
-            Adress = adress;
+            Address = address;
             Size = size;
         }
 
         int Store_Id { get; set; }
         int Company_ID { get; set; }
         int City_ID { get; set; }
-        string Adress { get; set; }
+        string Address { get; set; }
         int Size { get; set; } //squareMeters
     }
 
@@ -38,17 +38,15 @@ namespace IEC77C_ADT_2022_23_1.Models
 
     public class City
     {
-        public City(int city_ID, string city_Name, string state, string country)
+        public City(int city_ID, string city_Name, string country)
         {
             City_ID = city_ID;
             City_Name = city_Name;
-            State = state;
             Country = country;
         }
 
         int City_ID { get; set; }
         string City_Name { get; set; }
-        string State { get; set; }
         string Country { get; set; }
 
     }
