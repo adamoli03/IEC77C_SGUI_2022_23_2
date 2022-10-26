@@ -20,10 +20,10 @@ namespace IEC77C_ADT_2022_23_1.Data
         public virtual DbSet<Company> Company { get; set; }
 
         public virtual DbSet<City> City { get; set; }
-
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<Store>(entity =>
            {
                entity.HasKey(e => e.Store_ID);
@@ -78,25 +78,10 @@ namespace IEC77C_ADT_2022_23_1.Data
                     .HasMaxLength(20);
 
 
+
             });
-                
-        }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder
-                    .UseLazyLoadingProxies()
-                    .UseSqlServer(@"data Source=(LocalDB)\MSSQLLocalDB;
-                    AttachDbFilename=|DataDirectory|\Database1.mdf;
-                    Integrated Security=True; MultipleActiveResultSets=True");
-            }
-        }
-    }
-
-}
-/*modelBuilder.Entity<Store>().HasData
+            modelBuilder.Entity<Store>().HasData
             (
                 new Store
                 {
@@ -109,7 +94,7 @@ namespace IEC77C_ADT_2022_23_1.Data
                 new Store
                 {
                     Store_ID = 2,
-                    Company_ID=1,
+                    Company_ID = 1,
                     City_ID = 1,
                     Address = "Smith street 3",
                     Size = 30
@@ -173,7 +158,7 @@ namespace IEC77C_ADT_2022_23_1.Data
                 {
                     City_ID = 2,
                     City_Name = "Nailed", //Szeged
-                    Country = "Hungry" 
+                    Country = "Hungry"
                 },
                 new City
                 {
@@ -182,4 +167,22 @@ namespace IEC77C_ADT_2022_23_1.Data
                     Country = "Neitherlands"
                 }
 
-            );*/
+            );
+
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(@"data Source=(LocalDB)\MSSQLLocalDB;
+                    AttachDbFilename=|DataDirectory|\Database1.mdf;
+                    Integrated Security=True; MultipleActiveResultSets=True");
+            }
+        }
+    }
+
+}
+/**/
