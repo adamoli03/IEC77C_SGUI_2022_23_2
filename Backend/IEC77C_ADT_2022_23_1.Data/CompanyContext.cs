@@ -2,6 +2,7 @@
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using IEC77C_ADT_2022_23_1;
+using IEC77C_ADT_2022_23_1.Models;
 
 namespace IEC77C_ADT_2022_23_1.Data
 {
