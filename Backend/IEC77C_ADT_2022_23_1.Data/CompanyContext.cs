@@ -16,16 +16,16 @@ namespace IEC77C_ADT_2022_23_1.Data
             this.Database.EnsureCreated();
         }
         
-        public virtual DbSet<Store> Store { get; set; }
+        public virtual DbSet<Store> Stores { get; set; }
         
-        public virtual DbSet<Company> Company { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
 
-        public virtual DbSet<City> City { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
-            modelBuilder.Entity<Store>(entity =>
+            /*modelBuilder.Entity<Store>(entity =>
            {
                entity.HasKey(e => e.Store_ID);
 
@@ -81,6 +81,7 @@ namespace IEC77C_ADT_2022_23_1.Data
 
 
             });
+            */
 
             modelBuilder.Entity<Store>().HasData
             (
