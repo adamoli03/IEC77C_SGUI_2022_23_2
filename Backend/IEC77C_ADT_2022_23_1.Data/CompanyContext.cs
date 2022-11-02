@@ -24,64 +24,6 @@ namespace IEC77C_ADT_2022_23_1.Data
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
-            /*modelBuilder.Entity<Store>(entity =>
-           {
-               entity.HasKey(e => e.Store_ID);
-
-               entity.Property(e => e.Store_ID).HasColumnName("STORE_ID");
-
-               entity.Property(e => e.Company_ID)
-                   .HasColumnName("COMPANY_ID")
-                   .HasColumnType("int");
-
-               entity.Property(e => e.City_ID)
-                   .HasColumnName("CITY_ID")
-                   .HasColumnType("int");
-
-               entity.Property(e => e.Address)
-                   .HasColumnName("ADDRESS")
-                   .HasColumnType("varchar2)");
-
-               entity.Property(e => e.Size)
-                   .HasColumnName("SIZE")
-                   .HasColumnType("int");
-
-            });
-
-            modelBuilder.Entity<Company>(entity =>
-            {
-                entity.HasKey(e => e.Company_ID);
-
-                entity.Property(e => e.Name)
-                    .HasColumnName("COMPANY_NAME")
-                    .HasColumnType("varchar2")
-                    .HasMaxLength(15);
-
-                entity.Property(e => e.networth)
-                    .HasColumnName("NETWORTH")
-                    .HasColumnType("int");
-
-            });
-
-            modelBuilder.Entity<City>(entity =>
-            {
-                entity.HasKey(e => e.City_ID);
-
-                entity.Property(e => e.City_Name)
-                    .HasColumnName("CITY_NAME")
-                    .HasColumnType("varchar2")
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.Country)
-                    .HasColumnName("COUNTRY")
-                    .HasColumnType("varchar2")
-                    .HasMaxLength(20);
-
-
-
-            });
-            */
 
             modelBuilder.Entity<Store>().HasData
             (
