@@ -12,8 +12,6 @@ namespace IEC77C_ADT_2022_23_1.Repository
         private readonly DbContext Mycontext;
         private DbSet<TEntity> DbSet;
 
-        IEnumerable<TEntity> IRepository<TEntity>.GetAll => GetAll();
-
         public Repository(DbContext context)
         {
             Mycontext = context;

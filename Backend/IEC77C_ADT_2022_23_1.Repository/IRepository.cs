@@ -9,8 +9,8 @@ namespace IEC77C_ADT_2022_23_1.Repository
 {
     public interface IRepository<T> where T : class
     {
-        
-        public IEnumerable<T> GetAll { get; }
+
+        public IEnumerable<T> GetAll();
         void Add(T entity);
         void Delete(T entity);
         void Update(T entity);
