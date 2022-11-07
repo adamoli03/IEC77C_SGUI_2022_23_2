@@ -43,14 +43,9 @@ namespace IEC77C_ADT_2022_23_1.Repository
             Mycontext.SaveChanges();
         }
 
-        public T FindById(int ID)
+        public TEntity FindById(int ID)
         {
             return DbSet.Find(ID);
-        }
-
-        public void Update(T entity)
-        {
-           
         }
 
         TEntity IRepository<TEntity>.FindById(int ID)
