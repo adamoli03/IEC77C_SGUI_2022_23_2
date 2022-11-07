@@ -1,5 +1,5 @@
 ﻿using System;
-using IEC77C_ADT_2022_23_1.Data;
+using IEC77C_ADT_2022_23_1;
 
 namespace IEC77C_ADT_2022_23_1.Client
 {
