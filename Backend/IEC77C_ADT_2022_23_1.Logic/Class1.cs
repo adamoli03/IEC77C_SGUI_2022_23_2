@@ -2,7 +2,8 @@
 
 namespace IEC77C_ADT_2022_23_1.Logic
 {
-    public class Class1
+    public class StoreLogic
     {
+        public StoreLogic()
     }
 }

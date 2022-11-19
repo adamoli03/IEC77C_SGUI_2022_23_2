@@ -13,7 +13,7 @@ namespace IEC77C_ADT_2022_23_1.Client
     {
         static void Main(string[] args)
         {
-            CompanyContext MyContext = new CompanyContext();
+            /*CompanyContext MyContext = new CompanyContext();
             StoreRepository storerep = new StoreRepository(MyContext);
             CompanyRepository CompRep = new CompanyRepository(MyContext);
             CityRepository cityRepository = new CityRepository(MyContext);
@@ -23,7 +23,7 @@ namespace IEC77C_ADT_2022_23_1.Client
                 City_ID = 6,
                 Company_ID = 6,
                 Size = 30,
-            });
+            }); */
 
             
         }

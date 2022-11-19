@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IEC77C_ADT_2022_23_1.Repository
 {
+    
+
+
     public class StoreRepository : Repository<Store>
     {
         public StoreRepository(DbContext context) : base(context) { }
