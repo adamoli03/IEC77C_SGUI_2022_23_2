@@ -46,9 +46,6 @@ namespace IEC77C_ADT_2022_23_1.Repository
             return DbSet.Find(ID);
         }
 
-        TEntity IRepository<TEntity>.FindById(int ID)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

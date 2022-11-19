@@ -9,5 +9,5 @@ namespace IEC77C_ADT_2022_23_1.Repository
 {
     public interface IStoreRepository : IRepository<Store> { }
     public interface ICityRepository : IRepository<City> { }
-    public interface ICompanyInterface : IRepository<Company> { }
+    public interface ICompanyRepository : IRepository<Company> { }
 }
