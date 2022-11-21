@@ -13,13 +13,11 @@ namespace IEC77C_ADT_2022_23_1.Logic
     {
         ICompanyRepository companyrepo;
         IStoreRepository storerepo;
-        ICityRepository cityrepo;
 
-        public CompanyLogic(ICompanyRepository companyrepo, IStoreRepository storerepo, ICityRepository cityrepo)
+        public CompanyLogic(ICompanyRepository companyrepo, IStoreRepository storerepo)
         {
             this.companyrepo = companyrepo;
             this.storerepo = storerepo;
-            this.cityrepo = cityrepo;
         }
 
         public IList<Company> GetAll()
