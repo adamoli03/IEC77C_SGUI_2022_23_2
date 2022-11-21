@@ -12,10 +12,14 @@ namespace IEC77C_ADT_2022_23_1.Logic
     class CompanyLogic
     {
         ICompanyRepository companyrepo;
+        IStoreRepository storerepo;
+        ICityRepository cityrepo;
 
-        public CompanyLogic(ICompanyRepository companyrepo)
+        public CompanyLogic(ICompanyRepository companyrepo, IStoreRepository storerepo, ICityRepository cityrepo)
         {
             this.companyrepo = companyrepo;
+            this.storerepo = storerepo;
+            this.cityrepo = cityrepo;
         }
 
         public IList<Company> GetAll()
@@ -43,6 +47,11 @@ namespace IEC77C_ADT_2022_23_1.Logic
             return companyrepo.FindById(ID);
         }
 
-        //TODO: CREATE NON CRUD METHODS
+        public int CityCount(string company) //Param: name of company, returns the amount of cities the company has stores in
+        {
+            int compid = companyrepo.GetAll().Where(x => x.Name == company).Select(comp => comp.Company_ID).First();
+            return storerepo.GetAll().Where(x => x.Company_ID == compid).Select(c => c.City_ID).Count();
+        }
+
     }
 }
