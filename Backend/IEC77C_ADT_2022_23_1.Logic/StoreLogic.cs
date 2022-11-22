@@ -50,7 +50,7 @@ namespace IEC77C_ADT_2022_23_1.Logic
 
         public int TotalSize(int CompanyID)
         {
-            return storerepo.GetAll().Where(x => x.Company_ID == CompanyID).Sum(x => x.Size);
+            return storerepo.GetAll().Where(x => x.Company_ID == CompanyID).Select(s => s.Size).Sum();
 
         }
     }

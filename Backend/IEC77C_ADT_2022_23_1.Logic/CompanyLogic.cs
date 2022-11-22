@@ -15,7 +15,7 @@ namespace IEC77C_ADT_2022_23_1.Logic
         public void Update(Company company);
         public void Add(Company company);
         public void Delete(Company company);
-        public Company FindByID(int ID);
+        public Company FindById(int ID);
 
         public int CityCount(string company);
     }
@@ -50,7 +50,7 @@ namespace IEC77C_ADT_2022_23_1.Logic
             companyrepo.Delete(entity);
         }
 
-        public Company FindByID(int ID)
+        public Company FindById(int ID)
         {
             return companyrepo.FindById(ID);
         }
