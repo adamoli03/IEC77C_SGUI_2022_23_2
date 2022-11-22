@@ -83,5 +83,29 @@ namespace IEC77C_ADT_2022_23_1.Test
             //ASSERT
             companyrepoMock.Verify(m => m.FindById(It.IsAny<int>()), Times.Once);
         }
+
+        [Test]
+        public void CityCountTest()
+        {
+            //SETUP
+            string validcompanyname = "testcompany1";
+            string invalidcompanyname = "invalidcompany";
+
+            companyrepoMock.Setup(m => m.GetAll()).Returns(new List<Company> {
+                new Company { Name = validcompanyname, Company_ID = 1},
+                new Company { Name = invalidcompanyname, Company_ID = 2}
+            });
+
+            storerepoMock.Setup(m => m.GetAll()).Returns(new List<Store> {
+                new Store {Company_ID = 1, City_ID = 1},
+                new Store {Company_ID = 1, City_ID = 2},
+                new Store {Company_ID = 1, City_ID = 2},
+                new Store {Company_ID = 2, City_ID = 3}
+            });
+
+            //ASSERT
+            Assert.That(companyLogic.CityCount(validcompanyname).Equals(2));
+        }
+        
     }
 }

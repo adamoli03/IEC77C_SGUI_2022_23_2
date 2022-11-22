@@ -58,7 +58,13 @@ namespace IEC77C_ADT_2022_23_1.Logic
         public int CityCount(string company) //Param: name of company, returns the amount of cities the company has stores in
         {
             int compid = companyrepo.GetAll().Where(x => x.Name == company).Select(comp => comp.Company_ID).First();
-            return storerepo.GetAll().Where(x => x.Company_ID == compid).Select(c => c.City_ID).Count();
+
+            int q1 = storerepo.GetAll().Where(c => c.Company_ID == compid).GroupBy(x => x.City_ID).Select(g => new
+            {
+                Company_ID = g.Key
+            }).Count();
+
+            return q1;
         }
 
     }
