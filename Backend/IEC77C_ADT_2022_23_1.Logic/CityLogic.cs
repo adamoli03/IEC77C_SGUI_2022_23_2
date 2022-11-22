@@ -8,7 +8,16 @@ using System.Reflection;
 
 namespace IEC77C_ADT_2022_23_1.Logic
 {
-    public class CityLogic
+    public interface ICityLogic
+    {
+        public IList<City> GetAll();
+        public void Update(City city);
+        public void Add(City city);
+        public void Delete(City city);
+        public City FindById(int id);
+        public string MostStores(object input);
+    }
+    public class CityLogic : ICityLogic
     {
         ICityRepository cityrepo;
         IStoreRepository storerepo;
@@ -46,7 +55,7 @@ namespace IEC77C_ADT_2022_23_1.Logic
 
         //NON-CRUD METHODS -TODO
 
-        protected string MostStoresProcess(int CityID) //Param: City ID, returns name of the store with the most stores in given city
+        protected string MostStoresProcess(int CityID) //Param: City ID, returns name of the company with the most stores in given city
         {
             var CompanyCounts = storerepo.GetAll().Where(c => c.City_ID == CityID).GroupBy(x => x.Company_ID).Select(comp => new
             {
@@ -57,7 +66,7 @@ namespace IEC77C_ADT_2022_23_1.Logic
             return companyrepo.GetAll().Where(x => x.Company_ID == CompID).Select(c => c.Name).First();
         }
 
-        protected int NameToID(string CityName) //Param: city name, returns ID of the gives city
+        protected int NameToID(string CityName) //Param: city name, returns ID of the given city
         {
             return cityrepo.GetAll().Where(x => x.City_Name == CityName).Select(c => c.City_ID).First();
         }

@@ -9,7 +9,17 @@ using IEC77C_ADT_2022_23_1.Models;
 
 namespace IEC77C_ADT_2022_23_1.Logic
 {
-    class CompanyLogic
+    public interface ICompanyLogic
+    {
+        public IList<Company> GetAll();
+        public void Update(Company company);
+        public void Add(Company company);
+        public void Delete(Company company);
+        public Company FindByID(int ID);
+
+        public int CityCount(string company);
+    }
+    public class CompanyLogic : ICompanyLogic
     {
         ICompanyRepository companyrepo;
         IStoreRepository storerepo;

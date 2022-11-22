@@ -7,7 +7,16 @@ using System.Linq;
 
 namespace IEC77C_ADT_2022_23_1.Logic
 {
-    public class StoreLogic
+    public interface IStoreLogic
+    {
+        public IList<Store> GetAll();
+        public void Update(Store store);
+        public void Add(Store store);
+        public void Delete(Store store);
+        public Store FindById(int id);
+        public int TotalSize(int CompanyID);
+    }
+    public class StoreLogic :IStoreLogic
     {
         IStoreRepository storerepo;
         public StoreLogic(IStoreRepository storerepo)

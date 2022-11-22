@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Moq" Version="4.18.2" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Shared\IEC77C_ADT_2022_23_1.Models\IEC77C_ADT_2022_23_1.Models.csproj" />
     <ProjectReference Include="..\IEC77C_ADT_2022_23_1.Logic\IEC77C_ADT_2022_23_1.Logic.csproj" />
     <ProjectReference Include="..\IEC77C_ADT_2022_23_1.Repository\IEC77C_ADT_2022_23_1.Repository.csproj" />
