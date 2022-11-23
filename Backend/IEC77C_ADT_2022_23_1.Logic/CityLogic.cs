@@ -68,22 +68,23 @@ namespace IEC77C_ADT_2022_23_1.Logic
 
         protected int NameToID(string CityName) //Param: city name, returns ID of the given city
         {
-            return cityrepo.GetAll().Where(x => x.City_Name == CityName).Select(c => c.City_ID).First();
+            int cityid = cityrepo.GetAll().Where(x => x.City_Name == CityName).Select(c => c.City_ID).First();
+            return cityid;
         }
         
-        public string MostStores(object input)
+        public string MostStores(object cityidentifier) //Did it this way instead of overloading for fun purposes
         {
             string cityname = null;
-            Type t = input.GetType();
-            if (t is string) 
+            
+            if (cityidentifier.GetType() == typeof(string)) 
             {
-                var CityID = this.NameToID(input as string);
+                int CityID = this.NameToID(cityidentifier as string);
                 cityname = MostStoresProcess(CityID);
 
             }
-            else if(t is int)
+            else if(cityidentifier.GetType() == typeof(int))
             {
-                cityname = MostStoresProcess((int)input);
+                cityname = MostStoresProcess((int)cityidentifier);
             }
             else
             {

@@ -13,19 +13,37 @@ namespace IEC77C_ADT_2022_23_1.Test
 {
     class CityLogicTest
     {
-        Mock<ICityRepository> cityrepoMock = new();
         Mock<IStoreRepository> storerepoMock = new();
+        Mock<ICityRepository> cityrepoMock = new();
         Mock<ICompanyRepository> companyrepoMock = new();
-
         CityLogic citylogic;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void TestSetup()
         {
             cityrepoMock.Setup(m => m.FindById(It.IsAny<int>())).Returns(new City());
 
             citylogic = new(cityrepoMock.Object, storerepoMock.Object, companyrepoMock.Object);
+            
+            cityrepoMock.Setup(m => m.GetAll()).Returns(new List<City> {
+                new City {City_ID = 0, City_Name = "testedcity" },
+                new City {City_ID = 1, City_Name = "invalidcity" } });
 
+            storerepoMock.Setup(m => m.GetAll()).Returns(new List<Store>
+            {
+                new Store { Store_ID = 0, City_ID = 0, Company_ID = 0},
+                new Store { Store_ID = 1, City_ID = 0, Company_ID = 0},
+                new Store { Store_ID = 2, City_ID = 1, Company_ID = 0},
+                new Store { Store_ID = 3, City_ID = 0, Company_ID = 1},
+                new Store { Store_ID = 4, City_ID = 1, Company_ID = 1},
+                new Store { Store_ID = 5, City_ID = 1, Company_ID = 1}
+            });
+
+            companyrepoMock.Setup(m => m.GetAll()).Returns(new List<Company>
+            {
+                new Company { Company_ID = 0, Name = "ValidTest"},
+                new Company { Company_ID = 1, Name = "InvalidTest"}
+            });
         }
 
         [Test]
@@ -82,6 +100,32 @@ namespace IEC77C_ADT_2022_23_1.Test
 
             //ASSERT
             cityrepoMock.Verify(m => m.FindById(It.IsAny<int>()), Times.Once);
+        }
+
+        [Test]
+        public void MostStores_ThrowsIndexOutOfRange()
+        {
+            Assert.Throws<IndexOutOfRangeException>(() => citylogic.MostStores(3.15));
+        }
+        [Test]
+        public void MostStores_ThrowsInvalidOperationException()
+        {
+            //Setup
+
+            Assert.Throws<InvalidOperationException>(() => citylogic.MostStores("asd"));
+        }
+        [Test]
+        public void MostStores_StringInputValidityTest()
+        {
+            
+            //Tests for string and int inputs as well
+            Assert.That(citylogic.MostStores("testedcity").Equals("ValidTest"));
+            
+        }
+        [Test]
+        public void MostStores_IntInputValidityTest()
+        {
+            Assert.That(citylogic.MostStores(0).Equals("ValidTest"));
         }
     }
 }
