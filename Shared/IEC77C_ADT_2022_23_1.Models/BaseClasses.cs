@@ -14,6 +14,7 @@ namespace IEC77C_ADT_2022_23_1.Models
         public int Store_ID { get; set; }
         public int Company_ID { get; set; }
         public int City_ID { get; set; }
+        [Required]
         public string Address { get; set; }
         public int Size { get; set; } //squareMeters
     }
@@ -22,6 +23,7 @@ namespace IEC77C_ADT_2022_23_1.Models
     {
         [Key]
         public int Company_ID { get; set; }
+        [Required]
         public string Name { get; set; }
         public int networth { get; set; }
     }
@@ -30,6 +32,7 @@ namespace IEC77C_ADT_2022_23_1.Models
     {
         [Key]
         public int City_ID { get; set; }
+        [Required]
         public string City_Name { get; set; }
         public string Country { get; set; }
 

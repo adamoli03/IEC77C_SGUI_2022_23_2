@@ -20,6 +20,8 @@ namespace IEC77C_ADT_2022_23_1.Test
             //Setup of mock object
             
             storerepoMock.Setup(m => m.FindById(It.IsAny<int>())).Returns(new Store());
+            storerepoMock.Setup(m => m.Add(It.Is<Store>(x => x.Address == null)))
+                            .Throws<ArgumentNullException>();
 
             //Initialization of logic to be tested
             storelogic = new StoreLogic(storerepoMock.Object);
@@ -43,10 +45,15 @@ namespace IEC77C_ADT_2022_23_1.Test
         public void AddTest()
         {
             //ACT
-            storelogic.Add(new Store());
+            storelogic.Add(new Store { Address = "test"});
 
             //ASSERT
             storerepoMock.Verify(m => m.Add(It.IsAny<Store>()), Times.Once);
+        }
+        [Test]
+        public void AddThrows()
+        {
+            Assert.Throws<ArgumentNullException>(() => storelogic.Add(new Store()));
         }
         [Test]
         public void UpdateTest()

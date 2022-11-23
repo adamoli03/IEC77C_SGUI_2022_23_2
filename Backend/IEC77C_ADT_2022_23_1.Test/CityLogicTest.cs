@@ -22,6 +22,8 @@ namespace IEC77C_ADT_2022_23_1.Test
         public void TestSetup()
         {
             cityrepoMock.Setup(m => m.FindById(It.IsAny<int>())).Returns(new City());
+            cityrepoMock.Setup(m => m.Add(It.Is<City>(x => x.City_Name == null)))
+                            .Throws<ArgumentNullException>();
 
             citylogic = new(cityrepoMock.Object, storerepoMock.Object, companyrepoMock.Object);
             
@@ -65,10 +67,15 @@ namespace IEC77C_ADT_2022_23_1.Test
         public void AddTest()
         {
             //ACT
-            citylogic.Add(new City());
+            citylogic.Add(new City {City_Name = "test" });
 
             //ASSERT
             cityrepoMock.Verify(m => m.Add(It.IsAny<City>()), Times.Once);
+        }
+        [Test]
+        public void AddThrows()
+        {
+            Assert.Throws<ArgumentNullException>(() => citylogic.Add(new City()));
         }
         [Test]
         public void UpdateTest()

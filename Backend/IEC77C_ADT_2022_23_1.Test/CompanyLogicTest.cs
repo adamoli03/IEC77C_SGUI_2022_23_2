@@ -23,6 +23,9 @@ namespace IEC77C_ADT_2022_23_1.Test
         public void TestSetup()
         {
             companyrepoMock.Setup(m => m.FindById(It.IsAny<int>())).Returns(new Company());
+            companyrepoMock.Setup(m => m.Add(It.Is<Company>(x => x.Name == null)))
+                            .Throws<ArgumentNullException>();
+
 
             companyLogic = new(companyrepoMock.Object, storerepoMock.Object);
         }
@@ -33,24 +36,30 @@ namespace IEC77C_ADT_2022_23_1.Test
         {
             //SETUP
             companyrepoMock.Setup(m => m.GetAll()).Returns(new List<Company> {
-                new Company { Company_ID = 1 },
-                new Company { Company_ID = 2 } });
+                new Company { Company_ID = 1 }});
 
             //ACT
             companyLogic.GetAll();
 
             //ASSERT
-            companyrepoMock.Verify(m => m.GetAll(), Times.Once);
+            companyrepoMock.Verify(m => m.GetAll(), Times.AtLeastOnce);
         }
 
         [Test]
         public void AddTest()
         {
             //ACT
-            companyLogic.Add(new Company());
+            companyLogic.Add(new Company {Name = "Test"});
 
             //ASSERT
             companyrepoMock.Verify(m => m.Add(It.IsAny<Company>()), Times.Once);
+        }
+        [Test]
+        public void AddThrows()
+        {
+            
+
+            Assert.Throws<ArgumentNullException>(() => companyLogic.Add(new Company()));
         }
         [Test]
         public void UpdateTest()
