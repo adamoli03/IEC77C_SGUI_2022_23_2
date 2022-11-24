@@ -1,4 +1,5 @@
 using IEC77C_ADT_2022_23_1.Data;
+using IEC77C_ADT_2022_23_1.Endpoint.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,7 +31,11 @@ namespace IEC77C_ADT_2022_23_1.Endpoint
         {
             services.AddControllers();
 
+            //Configure dbcontext
             services.AddDbContext<CompanyContext>(options => options.UseSqlServer(ConnectionString));
+
+            //Configure services
+            services.AddTransient<StoresService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
