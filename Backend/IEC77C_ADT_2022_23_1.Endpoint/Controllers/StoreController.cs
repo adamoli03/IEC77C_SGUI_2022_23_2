@@ -24,7 +24,12 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
             var AllStores = _service.GetAllStore();
             return Ok(AllStores);
         }
-
+        [HttpGet("find-store-by-id/{id}")]
+        public IActionResult FindStoreByID(int id)
+        {
+            var store = _service.FindStoreByID(id);
+            return Ok(store);
+        }
 
         [HttpPost("add-store")]
         public IActionResult AddStore([FromBody]StoreVM store)

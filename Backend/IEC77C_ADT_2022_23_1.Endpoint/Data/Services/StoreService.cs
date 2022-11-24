@@ -23,7 +23,7 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
             _logic = new StoreLogic(storerepo);
         }
 
-        public void AddStore(StoreVM store)
+        public void AddStore(Store store)
         {
             _logic.Add(store);
         }
@@ -32,9 +32,9 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
         {
             return (List<Store>)_logic.GetAll();
         }
-        public StoreVM FindStoreByID(int id)
+        public Store FindStoreByID(int id)
         {
-            return (StoreVM)_logic.FindById(id);
+            return (Store)_logic.FindById(id);
         }
     }
 }
