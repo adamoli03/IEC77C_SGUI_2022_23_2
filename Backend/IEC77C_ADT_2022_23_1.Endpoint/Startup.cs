@@ -1,3 +1,5 @@
+using IEC77C_ADT_2022_23_1.Data;
+using IEC77C_ADT_2022_23_1.Endpoint.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +29,11 @@ namespace IEC77C_ADT_2022_23_1.Endpoint
         {
 
             services.AddControllers();
+            //Configure DBContext
+            services.AddDbContext<CompanyContext>();
+            //Configure the services
+            services.AddTransient<StoreService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "IEC77C_ADT_2022_23_1.Endpoint", Version = "v1" });

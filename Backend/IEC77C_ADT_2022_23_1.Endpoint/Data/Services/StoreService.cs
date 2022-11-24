@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IEC77C_ADT_2022_23_1.Endpoint.Data.ViewModels;
+using IEC77C_ADT_2022_23_1.Models;
 
 namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
 {
@@ -19,6 +21,20 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
             StoreRepository storerepo = new StoreRepository(context);
 
             _logic = new StoreLogic(storerepo);
+        }
+
+        public void AddStore(StoreVM store)
+        {
+            _logic.Add(store);
+        }
+
+        public List<Store> GetAllStore()
+        {
+            return (List<Store>)_logic.GetAll();
+        }
+        public StoreVM FindStoreByID(int id)
+        {
+            return (StoreVM)_logic.FindById(id);
         }
     }
 }
