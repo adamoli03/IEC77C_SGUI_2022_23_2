@@ -12,7 +12,7 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
     public class CityService
     {
         CompanyContext _context;
-        CityLogic _logic;
+        ICityLogic _logic;
 
         public CityService(CompanyContext context)
         {

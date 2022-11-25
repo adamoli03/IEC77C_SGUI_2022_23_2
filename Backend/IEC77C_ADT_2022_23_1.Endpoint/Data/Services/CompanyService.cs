@@ -12,7 +12,7 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
     public class CompanyService
     {
         private CompanyContext _context;
-        private CompanyLogic _logic;
+        private ICompanyLogic _logic;
 
         public CompanyService(CompanyContext context)
         {

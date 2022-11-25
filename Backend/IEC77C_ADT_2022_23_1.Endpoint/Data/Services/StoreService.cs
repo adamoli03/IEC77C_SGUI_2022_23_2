@@ -12,7 +12,7 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
     public class StoreService
     {
         private CompanyContext _context;
-        private StoreLogic _logic;
+        private IStoreLogic _logic;
 
         public StoreService(CompanyContext context)
         {
