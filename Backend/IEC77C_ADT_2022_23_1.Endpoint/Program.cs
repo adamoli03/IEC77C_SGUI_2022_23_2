@@ -11,6 +11,7 @@ namespace IEC77C_ADT_2022_23_1.Endpoint
 {
     public class Program
     {
+        
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
