@@ -58,5 +58,14 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
             _logic.Delete(city);
             return Ok();
         }
+
+        [HttpGet("City/{id}/MostStores")]
+        public IActionResult MostStores(int id)
+        {
+            
+            string result =_logic.MostStores(id);
+            return Ok(result);
+        }
+
     }
 }

@@ -46,5 +46,9 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
         {
             _logic.Delete(city);
         }
+        public string MostStores(Company company)
+        {
+            return _logic.MostStores(company.Company_ID);
+        }
     }
 }

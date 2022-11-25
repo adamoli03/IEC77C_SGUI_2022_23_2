@@ -51,5 +51,12 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
             _service.DeleteStore(store);
             return Ok();
         }
+
+        [HttpGet("Store/{id}/Total-Size")]
+        public IActionResult TotalSize(int id)
+        {
+            int size = _service.TotalSize(id);
+            return Ok(size);
+        }
     }
 }

@@ -44,5 +44,9 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
         {
             _logic.Delete(company);
         }
+        public int CityCount(string name)
+        {
+            return _logic.CityCount(name);
+        }
     }
 }

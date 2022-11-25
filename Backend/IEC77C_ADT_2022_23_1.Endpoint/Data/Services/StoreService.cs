@@ -42,8 +42,12 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
         public void DeleteStore(Store store)
         {
             _logic.Delete(store);
+            
         }
 
-
+        public int TotalSize(int id)
+        {
+            return _logic.TotalSize(id);
+        }
     }
 }

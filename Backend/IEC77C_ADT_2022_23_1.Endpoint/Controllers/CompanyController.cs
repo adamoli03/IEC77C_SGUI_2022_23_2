@@ -57,7 +57,12 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
             _service.Delete(comp);
             return Ok();
         }
-
+        [HttpGet("Company/{Company_Name}/CityCount")]
+        public IActionResult CityCount(string Company_Name)
+        {
+            int count = _service.CityCount(Company_Name);
+            return Ok(count);
+        }
         
     }
 }
