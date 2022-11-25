@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IEC77C_ADT_2022_23_1.Models;
 
 namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
 {
@@ -22,6 +23,28 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
 
             _logic = new CityLogic(cityrepo, storerepo, comprepo);
 
+        }
+
+        public void Add(City city)
+        {
+            _logic.Add(city);
+        }
+
+        public List<City> GetAll()
+        {
+            return (List<City>)_logic.GetAll();
+        }
+        public City FindByID(int id)
+        {
+            return (City)_logic.FindById(id);
+        }
+        public void Update(City city)
+        {
+            _logic.Update(city);
+        }
+        public void Delete(City city)
+        {
+            _logic.Delete(city);
         }
     }
 }

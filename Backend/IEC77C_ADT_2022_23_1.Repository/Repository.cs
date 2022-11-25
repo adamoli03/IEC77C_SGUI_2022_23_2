@@ -9,8 +9,8 @@ namespace IEC77C_ADT_2022_23_1.Repository
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly DbContext Mycontext;
-        private DbSet<TEntity> DbSet;
+        protected readonly DbContext Mycontext;
+        protected  DbSet<TEntity> DbSet;
 
         public Repository(DbContext context)
         {
@@ -45,6 +45,8 @@ namespace IEC77C_ADT_2022_23_1.Repository
         {
             return DbSet.Find(ID);
         }
+
+        
 
         
     }

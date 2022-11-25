@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IEC77C_ADT_2022_23_1.Endpoint.Data.ViewModels;
 using IEC77C_ADT_2022_23_1.Models;
 
 namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
@@ -32,9 +31,19 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
         {
             return (List<Store>)_logic.GetAll();
         }
-        public Store FindStoreByID(int id)
+        public Store FindByID(int id)
         {
             return (Store)_logic.FindById(id);
         }
+        public void UpdateStore(Store store)
+        {
+            _logic.Update(store);
+        }
+        public void DeleteStore(Store store)
+        {
+            _logic.Delete(store);
+        }
+
+
     }
 }
