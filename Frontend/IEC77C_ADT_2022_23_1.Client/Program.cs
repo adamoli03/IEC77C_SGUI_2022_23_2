@@ -14,6 +14,15 @@ namespace IEC77C_ADT_2022_23_1.Client
 
     class Program
     {
+        static HttpClient client = new HttpClient();
+
+        static async Task RunAsync()
+        {
+            client.BaseAddress = new Uri("http://localhost:51272");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+        }
         static void Main(string[] args)
         {
            
@@ -28,7 +37,7 @@ namespace IEC77C_ADT_2022_23_1.Client
 
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:5000/");
+                client.BaseAddress = new Uri("http://localhost:51272/");
 
                 var responseTask = client.GetAsync("store");
                 responseTask.Wait();
