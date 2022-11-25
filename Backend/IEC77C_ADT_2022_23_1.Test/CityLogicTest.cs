@@ -28,8 +28,8 @@ namespace IEC77C_ADT_2022_23_1.Test
             citylogic = new(cityrepoMock.Object, storerepoMock.Object, companyrepoMock.Object);
             
             cityrepoMock.Setup(m => m.GetAll()).Returns(new List<City> {
-                new City {City_ID = 0, City_Name = "testedcity" },
-                new City {City_ID = 1, City_Name = "invalidcity" } });
+                new City {City_ID = 0, City_Name = "testedcity", Country = "country1" },
+                new City {City_ID = 1, City_Name = "invalidcity", Country = "country2" } });
 
             storerepoMock.Setup(m => m.GetAll()).Returns(new List<Store>
             {
@@ -134,5 +134,15 @@ namespace IEC77C_ADT_2022_23_1.Test
         {
             Assert.That(citylogic.MostStores(0).Equals("ValidTest"));
         }
+        [Test]
+        public void ListCountriestEST()
+        {
+            List<string> test = citylogic.ListCountries();
+            List<string> expected = new List<string> { "country1", "country2" };
+            CollectionAssert.AreEquivalent(expected, test);
+        }
+
+
+        
     }
 }

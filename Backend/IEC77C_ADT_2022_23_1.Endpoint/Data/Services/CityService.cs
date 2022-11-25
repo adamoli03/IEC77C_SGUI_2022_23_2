@@ -50,5 +50,10 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
         {
             return _logic.MostStores(company.Company_ID);
         }
+
+        public List<string> ListCountries()
+        {
+            
+        }
     }
 }
