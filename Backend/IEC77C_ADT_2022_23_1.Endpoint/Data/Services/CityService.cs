@@ -53,7 +53,12 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Data.Services
 
         public List<string> ListCountries()
         {
-            
+            return _logic.ListCountries();
+        }
+
+        public List<Company> ListCompanies(City city)
+        {
+            return _logic.ListCompanies(city);
         }
     }
 }

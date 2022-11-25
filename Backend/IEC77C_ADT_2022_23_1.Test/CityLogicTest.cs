@@ -40,7 +40,6 @@ namespace IEC77C_ADT_2022_23_1.Test
                 new Store { Store_ID = 4, City_ID = 1, Company_ID = 1},
                 new Store { Store_ID = 5, City_ID = 1, Company_ID = 1}
             });
-
             companyrepoMock.Setup(m => m.GetAll()).Returns(new List<Company>
             {
                 new Company { Company_ID = 0, Name = "ValidTest"},
@@ -134,14 +133,21 @@ namespace IEC77C_ADT_2022_23_1.Test
         {
             Assert.That(citylogic.MostStores(0).Equals("ValidTest"));
         }
+
         [Test]
-        public void ListCountriestEST()
+        public void ListCountriestTest()
         {
             List<string> test = citylogic.ListCountries();
             List<string> expected = new List<string> { "country1", "country2" };
             CollectionAssert.AreEquivalent(expected, test);
         }
 
+        [Test]
+        public void ListCompaniesTest()
+        {
+            List<Company> test = citylogic.ListCompanies(new City { City_ID = 0, City_Name = "temp" });
+            Assert.That(test.Count().Equals(2));
+        }
 
         
     }

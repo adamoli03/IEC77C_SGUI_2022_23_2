@@ -56,12 +56,26 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
         }
 
         [HttpGet("City/{id}/MostStores")]
-        public IActionResult MostStores(int id)
+        public IActionResult MostStores(Company company,int id)
         {
-            
-            string result =_service.MostStores(new Company { Company_ID = id });
+            string result =_service.MostStores(company);
             return Ok(result);
         }
+        [HttpGet("City/List-Countries")]
+        public IActionResult ListCountries()
+        {
+            var result = _service.ListCountries();
+            return Ok(result);
+        }
+
+        [HttpGet("City/{id}/List-Companies")]
+        public IActionResult ListCompanies(City city, int id)
+        {
+            var result = _service.ListCompanies(city);
+            return Ok(result);
+        }
+
+
 
     }
 }

@@ -16,6 +16,9 @@ namespace IEC77C_ADT_2022_23_1.Logic
         public void Delete(City city);
         public City FindById(int id);
         public string MostStores(object input);
+        public List<string> ListCountries();
+        public List<Company> ListCompanies(City city);
+
     }
     public class CityLogic : ICityLogic
     {
@@ -72,16 +75,16 @@ namespace IEC77C_ADT_2022_23_1.Logic
             return cityid;
         }
 
-        public IList<City> ListCompanies(City city) //Lists companies who have stores in the given city
+        public List<Company> ListCompanies(City city) //Lists companies who have stores in the given city
         {
-            var companyIDs = storerepo.GetAll().Where(q => q.City_ID == city.City_ID).GroupBy(m => m.Company_ID).Select(c => c.Key);
+            var companyIDs = storerepo.GetAll().Where(q => q.City_ID == city.City_ID).GroupBy(m => m.Company_ID).Select(c => c.Key).ToList();
             List<Company> result = new List<Company>();
-            foreach (var element in companyIDs)
+            foreach (int element in companyIDs)
             {
                 Company temp = companyrepo.FindById(element);
                 result.Add(temp);
             }
-            return (IList<City>)result;
+            return result;
 
         }
 
