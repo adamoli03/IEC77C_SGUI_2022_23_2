@@ -6,55 +6,40 @@ using ConsoleTools;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text.Json;
+using System.Net.Http.Json;
 
 namespace IEC77C_ADT_2022_23_1.Client
 {
-    
+
 
 
     class Program
     {
-        static HttpClient client = new HttpClient();
-
-        static async Task RunAsync()
+        private static HttpClient thisclient = new HttpClient()
         {
-            client.BaseAddress = new Uri("http://localhost:51272");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-        }
-        static void Main(string[] args)
+            BaseAddress = new Uri("http://localhost:51272"),
+        };
+
+        
+
+        static async Task Main(string[] args)
         {
-           
-           
+            StoreRequest store = new(thisclient);
+            await store.GetAll();
+            Console.WriteLine();
+            await store.FindByID(2);
 
-            
-        }
-
-        static async Task<List<Store>> GetStores()
-        {
-            
-
-            using (HttpClient client = new HttpClient())
+            await store.Add(new Store
             {
-                client.BaseAddress = new Uri("http://localhost:51272/");
-
-                var responseTask = client.GetAsync("store");
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-
-                }
-                HttpResponseMessage response = await client.GetAsync("api/store");
-                response.EnsureSuccessStatusCode();
-                if (response.IsSuccessStatusCode)
-                {
-                    stores
-                }
+                Store_ID = 3,
+                Size = 10,
+                Address = "random street 10",
+                City_ID = 3,
+                Company_ID = 10
+            });
             
-            }
+
+
         }
     }
 }

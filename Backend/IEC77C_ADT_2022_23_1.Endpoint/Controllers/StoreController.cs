@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class StoreController : ControllerBase
     {
@@ -18,7 +17,7 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
         {
             _service = service;
         }
-        [HttpGet("store/get-all-stores")]
+        [HttpGet("Store/get-all-stores")]
         public IActionResult GetAllStores()
         {
             var AllStores = _service.GetAllStore();
@@ -31,14 +30,14 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
             return Ok(store);
         }
 
-        [HttpPost("store/Add")]
+        [HttpPost("Store/Add")]
         public IActionResult AddStore([FromBody]Store store)
         {
             _service.AddStore(store);
             return Ok();
         }
 
-        [HttpPut("Store/Put")]
+        [HttpPut("Store/Update")]
         public IActionResult UpdateStore([FromBody]Store store)
         {
             _service.UpdateStore(store);
