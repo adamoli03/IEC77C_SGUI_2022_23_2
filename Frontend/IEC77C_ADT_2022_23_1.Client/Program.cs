@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text.Json;
 using System.Net.Http.Json;
+using System.Net.Http.Headers;
 
 namespace IEC77C_ADT_2022_23_1.Client
 {
@@ -18,7 +19,9 @@ namespace IEC77C_ADT_2022_23_1.Client
         private static HttpClient thisclient = new HttpClient()
         {
             BaseAddress = new Uri("http://localhost:51272"),
+            
         };
+        
 
         
 
@@ -26,18 +29,8 @@ namespace IEC77C_ADT_2022_23_1.Client
         {
             StoreRequest store = new(thisclient);
             await store.GetAll();
-            Console.WriteLine();
-            await store.FindByID(2);
+            await store.GetTotalSize(1);
 
-            await store.Add(new Store
-            {
-                Store_ID = 3,
-                Size = 10,
-                Address = "random street 10",
-                City_ID = 3,
-                Company_ID = 10
-            });
-            
 
 
         }

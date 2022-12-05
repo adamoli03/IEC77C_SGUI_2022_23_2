@@ -37,17 +37,17 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
             return Ok();
         }
 
-        [HttpPut("Store/Update")]
+        [HttpPatch("Store/Update")]
         public IActionResult UpdateStore([FromBody]Store store)
         {
             _service.UpdateStore(store);
             return Ok();
         }
 
-        [HttpDelete("Store/Delete")]
-        public IActionResult DeleteStore([FromBody]Store store)
+        [HttpDelete("Store/Delete/{id}")]
+        public IActionResult DeleteStore(int id)
         {
-            _service.DeleteStore(store);
+            _service.DeleteStore(new Store { Store_ID = id });
             return Ok();
         }
 
