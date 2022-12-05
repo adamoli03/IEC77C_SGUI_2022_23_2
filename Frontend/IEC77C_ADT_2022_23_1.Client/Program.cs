@@ -29,7 +29,9 @@ namespace IEC77C_ADT_2022_23_1.Client
         {
             StoreRequest store = new(thisclient);
             CityRequest city = new(thisclient);
+            CompanyRequest company = new(thisclient);
 
+            
             
 
         }

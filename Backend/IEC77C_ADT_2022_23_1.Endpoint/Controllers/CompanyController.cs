@@ -61,6 +61,7 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
         public IActionResult CityCount(string Company_Name)
         {
             int count = _service.CityCount(Company_Name);
+            
             return Ok(count);
         }
         
