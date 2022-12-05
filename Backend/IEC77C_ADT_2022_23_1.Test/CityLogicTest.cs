@@ -107,27 +107,7 @@ namespace IEC77C_ADT_2022_23_1.Test
             //ASSERT
             cityrepoMock.Verify(m => m.FindById(It.IsAny<int>()), Times.Once);
         }
-
-        [Test]
-        public void MostStores_ThrowsIndexOutOfRange()
-        {
-            Assert.Throws<IndexOutOfRangeException>(() => citylogic.MostStores(3.15));
-        }
-        [Test]
-        public void MostStores_ThrowsInvalidOperationException()
-        {
-            //Setup
-
-            Assert.Throws<InvalidOperationException>(() => citylogic.MostStores("asd"));
-        }
-        [Test]
-        public void MostStores_StringInputValidityTest()
-        {
-            
-            //Tests for string and int inputs as well
-            Assert.That(citylogic.MostStores("testedcity").Equals("ValidTest"));
-            
-        }
+        
         [Test]
         public void MostStores_IntInputValidityTest()
         {

@@ -17,13 +17,13 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
         {
             _service = service;
         }
-        [HttpGet("Store/get-all-stores")]
+        [HttpGet("Store/Get-All")]
         public IActionResult GetAllStores()
         {
             var AllStores = _service.GetAllStore();
             return Ok(AllStores);
         }
-        [HttpGet("Store/find-by-id/{id}")]
+        [HttpGet("Store/FindById/{id}")]
         public IActionResult FindStoreByID(int id)
         {
             var store = _service.FindByID(id);

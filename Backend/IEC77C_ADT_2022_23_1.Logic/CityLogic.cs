@@ -15,7 +15,7 @@ namespace IEC77C_ADT_2022_23_1.Logic
         public void Add(City city);
         public void Delete(City city);
         public City FindById(int id);
-        public string MostStores(object input);
+        public string MostStores(int id);
         public List<string> ListCountries();
         public List<Company> ListCompanies(City city);
 
@@ -58,7 +58,7 @@ namespace IEC77C_ADT_2022_23_1.Logic
 
         //NON-CRUD METHODS -TODO
 
-        protected string MostStoresProcess(int CityID) //Param: City ID, returns name of the company with the most stores in given city
+        public string MostStores(int CityID) //Param: City ID, returns name of the company with the most stores in given city
         {
             var CompanyCounts = storerepo.GetAll().Where(c => c.City_ID == CityID).GroupBy(x => x.Company_ID).Select(comp => new
             {
@@ -69,10 +69,13 @@ namespace IEC77C_ADT_2022_23_1.Logic
             return companyrepo.GetAll().Where(x => x.Company_ID == CompID).Select(c => c.Name).First();
         }
 
-        protected int NameToID(string CityName) //Param: city name, returns ID of the given city
+        
+        public List<string> ListCountries() //Lists countries present in database
         {
-            int cityid = cityrepo.GetAll().Where(x => x.City_Name == CityName).Select(c => c.City_ID).First();
-            return cityid;
+            var result = cityrepo.GetAll().GroupBy(g => g.Country).Select(c => c.Key).ToList();
+
+            return result;
+
         }
 
         public List<Company> ListCompanies(City city) //Lists companies who have stores in the given city
@@ -86,34 +89,6 @@ namespace IEC77C_ADT_2022_23_1.Logic
             }
             return result;
 
-        }
-
-        public List<string> ListCountries() //Lists countries present in database
-        {
-            var result = cityrepo.GetAll().GroupBy(g => g.Country).Select(c => c.Key).ToList();
-
-            return result;
-
-        }
-        public string MostStores(object cityidentifier) //Did it this way instead of overloading for fun purposes
-        {
-            string cityname = null;
-            
-            if (cityidentifier.GetType() == typeof(string)) 
-            {
-                int CityID = this.NameToID(cityidentifier as string);
-                cityname = MostStoresProcess(CityID);
-
-            }
-            else if(cityidentifier.GetType() == typeof(int))
-            {
-                cityname = MostStoresProcess((int)cityidentifier);
-            }
-            else
-            {
-                throw new IndexOutOfRangeException("Wrong input type");
-            }
-            return cityname;
         }
     }
 }

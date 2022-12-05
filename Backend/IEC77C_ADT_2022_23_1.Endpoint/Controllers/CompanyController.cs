@@ -24,7 +24,7 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
 
         
 
-        [HttpGet("Company/Find-By-ID/{id}")]
+        [HttpGet("Company/FindById/{id}")]
         public IActionResult FindByID(int id)
         {
             Company comp =_service.FindByID(id);

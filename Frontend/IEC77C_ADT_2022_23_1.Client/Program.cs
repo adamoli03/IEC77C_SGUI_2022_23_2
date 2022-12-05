@@ -21,17 +21,16 @@ namespace IEC77C_ADT_2022_23_1.Client
             BaseAddress = new Uri("http://localhost:51272"),
             
         };
-        
 
-        
+
+
 
         static async Task Main(string[] args)
         {
             StoreRequest store = new(thisclient);
-            await store.GetAll();
-            await store.GetTotalSize(1);
+            CityRequest city = new(thisclient);
 
-
+            
 
         }
     }

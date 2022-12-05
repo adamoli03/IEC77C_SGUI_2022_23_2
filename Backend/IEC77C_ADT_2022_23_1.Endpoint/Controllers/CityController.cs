@@ -49,18 +49,21 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
             _service.Update(city);
             return Ok();
         }
-        [HttpDelete("City/Delete")]
-        public IActionResult DeleteCity([FromBody]City city)
+        [HttpDelete("City/Delete/{id}")]
+        public IActionResult DeleteCity(int id)
         {
-            _service.Delete(city);
+            _service.Delete(new City {City_ID = id});
             return Ok();
         }
 
+       //Non-CRUD
+
         [HttpGet("City/{id}/MostStores")]
-        public IActionResult MostStores(Company company,int id)
+        public IActionResult MostStores(int id)
         {
-            string result =_service.MostStores(company);
-            return Ok(result);
+            string result =_service.MostStores(id);
+            Company temp = new Company { Name = result };
+            return Ok(temp);
         }
         [HttpGet("City/List-Countries")]
         public IActionResult ListCountries()
@@ -70,9 +73,10 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
         }
 
         [HttpGet("City/{id}/List-Companies")]
-        public IActionResult ListCompanies(City city, int id)
+        public IActionResult ListCompanies(int id)
         {
-            var result = _service.ListCompanies(city);
+            var result = _service.ListCompanies(new City 
+            {City_ID = id });
             return Ok(result);
         }
 

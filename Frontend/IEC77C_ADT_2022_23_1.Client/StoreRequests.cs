@@ -25,7 +25,7 @@ namespace IEC77C_ADT_2022_23_1.Client
         public async Task GetAll()
         {
             
-            List<Store> stores = await myclient.GetFromJsonAsync<List<Store>>("store/get-all-stores");
+            List<Store> stores = await myclient.GetFromJsonAsync<List<Store>>("store/Get-All");
             foreach (var element in stores)
             {
                 Console.WriteLine(element.GetString());
@@ -34,7 +34,7 @@ namespace IEC77C_ADT_2022_23_1.Client
 
         public async Task FindByID(int id)
         {
-            Store store = await myclient.GetFromJsonAsync<Store>($"Store/find-by-id/{id}");
+            Store store = await myclient.GetFromJsonAsync<Store>($"Store/FindById/{id}");
             Console.WriteLine(store.GetString());
         }
 
