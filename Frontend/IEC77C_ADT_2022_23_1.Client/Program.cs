@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
+using System.Threading;
 
 namespace IEC77C_ADT_2022_23_1.Client
 {
@@ -30,8 +31,9 @@ namespace IEC77C_ADT_2022_23_1.Client
             StoreRequest store = new(thisclient);
             CityRequest city = new(thisclient);
             CompanyRequest company = new(thisclient);
-
-            var StoreSubMenu = new ConsoleMenu(args, level: 1)
+            try
+            {
+                var StoreSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", async () => await store.GetAll())
                 .Add("Add", async () => await store.Add())
                 .Add("Update", async () => await store.Update())
@@ -39,24 +41,42 @@ namespace IEC77C_ADT_2022_23_1.Client
                 .Add("Get Total Size", async () => await store.GetTotalSize())
                 .Add("Exit", ConsoleMenu.Close);
 
-            var CitySubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", async () => await city.GetAll())
-                .Add("Add", async () => await city.Add())
-                .Add("Update", async () => await city.Update())
-                .Add("Delete", async () => await city.Delete())
-                .Add("Most cities", async () => await city.GetMostStores())
-                .Add("List countries", async () => await city.GetListCountries())
-                .Add("List companies", async () => await city.GetListCompanies())
-                .Add("Exit", ConsoleMenu.Close);
+                var CitySubMenu = new ConsoleMenu(args, level: 1)
+                    .Add("List", async () => await city.GetAll())
+                    .Add("Add", async () => await city.Add())
+                    .Add("Update", async () => await city.Update())
+                    .Add("Delete", async () => await city.Delete())
+                    .Add("Most cities", async () => await city.GetMostStores())
+                    .Add("List countries", async () => await city.GetListCountries())
+                    .Add("List companies", async () => await city.GetListCompanies())
+                    .Add("Exit", ConsoleMenu.Close);
+
+                var CompanySubMenu = new ConsoleMenu(args, level: 1)
+                    .Add("List", async () => { Thread.Sleep(20); await company.GetAll(); })
+                    .Add("Add", async () => await company.Add())
+                    .Add("Update", async () => await company.Update())
+                    .Add("Delete", async () => await company.Delete())
+                    .Add("City presence", async () => await company.GetCityCount())
+                    .Add("Exit", ConsoleMenu.Close);
+
+                var menu = new ConsoleMenu(args, level: 0)
+                    .Add("Stores", () => StoreSubMenu.Show())
+                    .Add("Cities", () => CitySubMenu.Show())
+                    .Add("Companies", () => CompanySubMenu.Show())
+                    .Add("Exit", ConsoleMenu.Close);
 
 
+                menu.Show();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Wrong input"); 
 
-            var menu = new ConsoleMenu(args, level: 0)
-                .Add("Stores", () => StoreSubMenu.Show())
-                .Add("Cities", () => CitySubMenu.Show())
-                .Add("Exit", ConsoleMenu.Close);
-
-            menu.Show();
+            }
+            
+            
+            
+            
         }
     }
 }
