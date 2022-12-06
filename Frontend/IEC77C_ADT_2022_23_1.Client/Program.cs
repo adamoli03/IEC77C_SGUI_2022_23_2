@@ -34,15 +34,15 @@ namespace IEC77C_ADT_2022_23_1.Client
             try
             {
                 var StoreSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", async () => await store.GetAll())
-                .Add("Add", async () => await store.Add())
-                .Add("Update", async () => await store.Update())
-                .Add("Delete", async () => await store.Delete())
-                .Add("Get Total Size", async () => await store.GetTotalSize())
-                .Add("Exit", ConsoleMenu.Close);
+                    .Add("List", async () => { Thread.Sleep(20); await store.GetAll(); })
+                    .Add("Add", async () => await store.Add())
+                    .Add("Update", async () => await store.Update())
+                    .Add("Delete", async () => await store.Delete())
+                    .Add("Get Total Size", async () => await store.GetTotalSize())
+                    .Add("Exit", ConsoleMenu.Close);
 
                 var CitySubMenu = new ConsoleMenu(args, level: 1)
-                    .Add("List", async () => await city.GetAll())
+                    .Add("List", async () => { Thread.Sleep(20); await city.GetAll(); })
                     .Add("Add", async () => await city.Add())
                     .Add("Update", async () => await city.Update())
                     .Add("Delete", async () => await city.Delete())
