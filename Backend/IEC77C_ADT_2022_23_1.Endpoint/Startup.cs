@@ -31,8 +31,10 @@ namespace IEC77C_ADT_2022_23_1.Endpoint
             services.AddControllers();
             //Configure DBContext
             services.AddDbContext<CompanyContext>();
-            //Configure the services
+            //Configure the services for later website implementation
             services.AddTransient<StoreService>();
+            services.AddTransient<CompanyService>();
+            services.AddTransient<CityService>();
 
             services.AddSwaggerGen(c =>
             {

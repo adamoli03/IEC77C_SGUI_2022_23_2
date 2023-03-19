@@ -12,10 +12,10 @@ namespace IEC77C_ADT_2022_23_1.Models
     public class Store
     {
         [Key]
-        [property: JsonPropertyName("Store_ID")]
-        public int Store_ID { get; set; }
-        [property: JsonPropertyName("Company_ID")]public int Company_ID { get; set; }
-        [property: JsonPropertyName("City_ID")]public int City_ID { get; set; }
+
+        [property: JsonPropertyName("Store_ID")] public int Store_ID { get; set; }
+        [property: JsonPropertyName("Company_ID")] public int Company_ID { get; set; }
+        [property: JsonPropertyName("City_ID")] public int City_ID { get; set; }
         [Required]
         [property: JsonPropertyName("Address")] public string Address { get; set; }
         [property: JsonPropertyName("Size")] public int Size { get; set; } //squareMeters

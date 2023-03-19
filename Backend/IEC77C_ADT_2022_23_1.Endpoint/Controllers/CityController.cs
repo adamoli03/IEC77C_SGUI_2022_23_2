@@ -77,6 +77,7 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
         {
             var result = _service.ListCompanies(new City 
             {City_ID = id });
+
             return Ok(result);
         }
 

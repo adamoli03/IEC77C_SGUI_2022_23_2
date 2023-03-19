@@ -34,7 +34,6 @@ namespace IEC77C_ADT_2022_23_1.Client
         {
 
             List<City> cities = await myclient.GetFromJsonAsync<List<City>>("City/Get-All");
-            Thread.Sleep(2000);
             foreach (var element in cities)
             {
                 Console.WriteLine(element.GetString());
