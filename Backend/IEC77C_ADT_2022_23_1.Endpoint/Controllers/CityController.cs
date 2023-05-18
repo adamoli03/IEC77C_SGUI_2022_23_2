@@ -9,47 +9,47 @@ using System.Threading.Tasks;
 
 namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
 {
-
+    [Route("[controller]")]
+    [ApiController]
     public class CityController : Controller
     {
-        CompanyContext _context;
-        CityService _service;
+        CompanyContext _context { get; }
+        CityService _service { get; set; }
 
         public CityController(CompanyContext context)
         {
-            _context = context;
             _context = context;
 
             _service = new CityService(context);
         }
         
 
-        [HttpGet("City/Get-All")]
+        [HttpGet("Get-All")]
         public IActionResult GetAll()
         {
             List<City> citylist = (List<City>)_service.GetAll();
             return Ok(citylist);
         }
-        [HttpGet("City/FindById/{id}")]
+        [HttpGet("FindById/{id}")]
         public IActionResult FindByID(int id)
         {
             var city = _service.FindByID(id);
             return Ok(city);
         }
 
-        [HttpPost("City/Add")]
+        [HttpPost("Add")]
         public IActionResult AddCity([FromBody]City city)
         {
             _service.Add(city);
             return Ok();
         }
-        [HttpPatch("City/Update")]
+        [HttpPatch("Update")]
         public IActionResult UpdateCity([FromBody]City city)
         {
             _service.Update(city);
             return Ok();
         }
-        [HttpDelete("City/Delete/{id}")]
+        [HttpDelete("Delete/{id}")]
         public IActionResult DeleteCity(int id)
         {
             _service.Delete(new City {City_ID = id});
@@ -58,21 +58,21 @@ namespace IEC77C_ADT_2022_23_1.Endpoint.Controllers
 
        //Non-CRUD
 
-        [HttpGet("City/{id}/MostStores")]
+        [HttpGet("{id}/MostStores")]
         public IActionResult MostStores(int id)
         {
             string result =_service.MostStores(id);
             Company temp = new Company { Name = result };
             return Ok(temp);
         }
-        [HttpGet("City/List-Countries")]
+        [HttpGet("List-Countries")]
         public IActionResult ListCountries()
         {
             var result = _service.ListCountries();
             return Ok(result);
         }
 
-        [HttpGet("City/{id}/List-Companies")]
+        [HttpGet("{id}/List-Companies")]
         public IActionResult ListCompanies(int id)
         {
             var result = _service.ListCompanies(new City 
